@@ -1,0 +1,58 @@
+<%- include("partials/header") %>
+<section id="add">
+    <h1 style="text-align: center; color: black;">Patient Details</h1>
+    <% if (data.message) { %>
+    <h3 style="text-align: center;color: red;">Id already exists</h3>
+    <% } %>
+  <form style="margin: 5%;" method="post" action="/add" autocomplete="off">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label >Id</label>
+          <input class="form-control" id="pId" placeholder="Id" name="PatientId" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label >Name</label>
+          <input class="form-control" id="pName" placeholder="Name" name="Patientname" required>
+        </div>
+      </div>
+	  <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Phone</label>
+          <input class="form-control" id="phone" type="text" placeholder="Phone" name="Phone" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label >Email</label>
+          <input class="form-control" id="email" type="email" placeholder="Email Id" name="email">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Address Line 1</label>
+          <input class="form-control" id="add1" type="text" placeholder="Address Line 1" name="add1" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label >Address Line 2</label>
+          <input class="form-control" id="add2" type="text" placeholder="Address Line 2" name="add2">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label >Age</label>
+          <input class="form-control" id="add2" type="text" placeholder="Age" name="age" required>
+        </div>  
+        <div class="form-group col-md-6">
+              <label for="dr">Diabetic Retinopathy</label>
+              <select name="dr" class="form-control" id="dr" style="text-align: center;">
+                  <option value="0">No DR</option>
+                  <option value="1">Mild DR</option>
+                  <option value="2">Moderate DR</option>
+                  <option value="3">Severe DR</option>
+                  <option value="4">Proliferative DR</option>
+              </select>
+          </div>
+      </div>
+      <button type="submit" class="btn btn-block btn-lg btn-outline-success angled-gradient-button">Add</button>
+    </form>
+	
+</section>
+<%- include("partials/footer") %>  

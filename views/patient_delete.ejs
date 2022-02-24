@@ -1,0 +1,14 @@
+<%- include("partials/header") %>
+<section id="patient_delete_ip">
+    <h1 style="text-align: center; color: black;">Delete Patient Details</h1>
+  <form style="margin: 5%;" method="post" action="/db/del" autocomplete="off" onsubmit="return confirm('Really delete this entry?')" >
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label >Patient Id</label>
+          <input class="form-control" placeholder="Patient Id" name="PatientId" required>
+        </div>
+      <button type="submit" class="btn btn-block btn-lg btn-outline-primary angled-gradient-button">Confirm</button>
+      </div>
+    </form>
+</section>
+<%- include("partials/footer") %>
