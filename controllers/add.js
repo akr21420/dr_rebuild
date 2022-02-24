@@ -6,7 +6,7 @@ const handleErr = (err, res) => {
   res.status(500).contentType("text/plain").end("Something went wrong!");
 };
 const upload = multer({
-  dest: "../upload/",
+  dest: "../tmp/upload/",
 });
 const renderAdd = function (req, res) {
   res.render("patient_add", { data: {} });
