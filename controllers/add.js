@@ -14,7 +14,7 @@ const renderAdd = function (req, res) {
 const addImg = (req, res) => {
   upload.single("file");
   const temp = req.file.path;
-  const target = path.join(__dirname, "../upload/");
+  const target = path.join(__dirname, "../tmp/upload/");
   if (
     path.extname(req.file.originalname).toLowerCase() == "png" ||
     path.extname(req.file.originalname).toLowerCase() == "jpg"
