@@ -8,7 +8,9 @@ const addrouter = require("./routes/add");
 const viewrouter = require("./routes/view");
 const editrouter = require("./routes/edit");
 const dbrouter = require("./routes/db");
+const imgrouter = require("./routes/img");
 const dotenv = require("dotenv");
+global.imgurl = "";
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,6 +33,7 @@ app.use("/add", addrouter);
 app.use("/view", viewrouter);
 app.use("/edit", editrouter);
 app.use("/db", dbrouter);
-app.listen(process.env.PORT||3000, () => {
+app.use("/img", imgrouter);
+app.listen(process.env.PORT || 3000, () => {
   console.log("Server Running");
 });

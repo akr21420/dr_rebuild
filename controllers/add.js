@@ -1,38 +1,11 @@
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
 const Patient = require("../models/patient");
-const handleErr = (err, res) => {
-  res.status(500).contentType("text/plain").end("Something went wrong!");
-};
-const upload = multer({
-  dest: "../tmp/upload/",
-});
 const renderAdd = function (req, res) {
+  console.log(imgurl);
   res.render("patient_add", { data: {} });
 };
-const addImg = (req, res) => {
-  upload.single("file");
-  const temp = req.file.path;
-  const target = path.join(__dirname, "../tmp/upload/");
-  if (
-    path.extname(req.file.originalname).toLowerCase() == "png" ||
-    path.extname(req.file.originalname).toLowerCase() == "jpg"
-  ) {
-    fs.rename(temp, target, (err) => {
-      if (err) return handleErr(err, res);
-      res.status(200).contentType("text/plain").end("Uploaded");
-    });
-  } else {
-    fs.unlink(temp, (err) => {
-      if (err) return handleErr(err, res);
 
-      res.status(403).contentType("text/plain").end("Only png or jpg");
-    });
-  }
-};
 const addPatient = (req, res) => {
-  console.log("Function called");
+  console.log(imgurl);
   let id = req.body.PatientId;
   let name = req.body.Patientname;
   let phone = req.body.Phone;
@@ -51,12 +24,13 @@ const addPatient = (req, res) => {
     add2,
     dr,
   });
+  data.img.push(imgurl);
   console.log(data);
   data
     .save()
     .then(() => {
       console.log("Saved");
-      res.redirect("/add");
+      res.redirect("/img");
     })
     .catch((err) => {
       console.log(err.message);

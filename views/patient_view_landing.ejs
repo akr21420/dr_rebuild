@@ -1,15 +1,19 @@
-<%- include("partials/header") %>
-<% if (data) { %>
+<%- include("partials/header") %> <% if (data) { %>
 <div class="row justify-content-center">
   <div class="col-auto">
     <table class="table table-hover table-responsive table-bordered mt-5">
       <thead>
-          <th colspan="2">
-            <%= data.name %>
-          </th>
+        <th colspan="2"><%= data.name %></th>
       </thead>
-        <tbody>
-        <tr class="bg-dark" style="color: white;">
+      <tbody>
+        <tr>
+          <td colspan="2">
+            <% if (data.img) { %>
+            <img src="<%= data.img[0] %> " />
+            <% } else {%> Image Not Found <%}%>
+          </td>
+        </tr>
+        <tr class="bg-dark" style="color: white">
           <th>Id</th>
           <td><%= data.id %></td>
         </tr>
@@ -17,7 +21,7 @@
           <th>Name</th>
           <td><%= data.name %></td>
         </tr>
-        <tr class="bg-dark" style="color: white;">
+        <tr class="bg-dark" style="color: white">
           <th>Age</th>
           <td><%= data.age %></td>
         </tr>
@@ -25,7 +29,7 @@
           <th>Phone</th>
           <td><%= data.phone %></td>
         </tr>
-        <tr class="bg-dark" style="color: white;">
+        <tr class="bg-dark" style="color: white">
           <th>Email</th>
           <td><%= data.email %></td>
         </tr>
@@ -33,51 +37,57 @@
           <th>Address Line 1</th>
           <td><%= data.add1 %></td>
         </tr>
-        <tr class="bg-dark" style="color: white;">
+        <tr class="bg-dark" style="color: white">
           <th>Address Line 2</th>
           <td><%= data.add2 %></td>
         </tr>
         <tr>
           <th>Retinopathy</th>
-          <% switch(data.dr) {
-            case 0: %>
-            <td>No Dr</td>
-            <% break;
-            case 1: %>
-            <td>Mild DR</td>
-            <% break;
-            case 2: %>
-            <td>Moderate DR</td>
-            <% break;
-            case 3: %>
-            <td>Severe DR</td>
-            <% break;
-            case 4: %>
-            <td>Proliferative DR</td>
-            <% break;
-           } %>
+          <% switch(data.dr) { case 0: %>
+          <td>No Dr</td>
+          <% break; case 1: %>
+          <td>Mild DR</td>
+          <% break; case 2: %>
+          <td>Moderate DR</td>
+          <% break; case 3: %>
+          <td>Severe DR</td>
+          <% break; case 4: %>
+          <td>Proliferative DR</td>
+          <% break; } %>
         </tr>
       </tbody>
     </table>
-    <button type="button" onclick="location.href='/'" class="btn btn-block btn-lg btn-outline-primary angled-gradient-button">Back</button>
+    <button
+      type="button"
+      onclick="location.href='/'"
+      class="btn btn-block btn-lg btn-outline-primary angled-gradient-button"
+    >
+      Back
+    </button>
   </div>
 </div>
 
 <% } else {%>
 <h1 style="color: black; text-align: center">No Patient</h1>
-<button type="button" onclick="location.href='/'" class="btn btn-block btn-lg btn-outline-primary angled-gradient-button">Back</button>
+<button
+  type="button"
+  onclick="location.href='/'"
+  class="btn btn-block btn-lg btn-outline-primary angled-gradient-button"
+>
+  Back
+</button>
 
-<% } %> 
+<% } %>
 
 <style>
-    th {
-      text-align: center;
-    }
-    td {
-      text-align: center;
-    }
-    table{
-        margin-top: 5%;
-    }
-  </style>
+  th {
+    text-align: center;
+  }
+  td {
+    text-align: center;
+  }
+  table {
+    margin-top: 5%;
+  }
+</style>
 <%- include("partials/footer") %>
