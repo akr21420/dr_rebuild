@@ -1,0 +1,50 @@
+<%- include("partials/header") %>
+<br>
+<div>
+    <canvas id="myChart">
+
+    </canvas>
+</div>
+<br>
+<div class="form-row">
+<button type="button" onclick="location.href='/add'" class="btn btn-block btn-lg btn-outline-primary angled-gradient-button">Save Patient Details</button>
+<button type="button" onclick="location.href='/predict/nosave'"  class="btn btn-block btn-lg btn-outline-warning angled-gradient-button">Predict Again</button>
+</div>
+<script>
+    var vals = <%- values %>;
+    console.log(Object.keys(vals));
+    let data = []
+    try {
+        Object.keys(vals).map((key)=>{
+            data.push(vals[key]*100)
+        })
+    } catch (error) {
+        console.log(error);
+    }
+    console.log(data);
+    var ctx = document.getElementById("myChart")
+    var myChart = new Chart(ctx,{
+        type: 'bar',
+        data: {
+            labels: ["No DR","Mild DR","Moderate DR","Severe DR","Proliferative DR"],
+            datasets: [{
+                label: "Percentage Chance of Occurrence",
+                backgroundColor: "rgba(0, 0, 0, 1)",
+	            borderColor: "##000000",
+	            borderWidth: 2,
+	            hoverBackgroundColor: "#808080",
+                data: data
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    })
+</script>
+<style>
+    .darkmode--activated button[type=button]{
+        color: black;
+        border: 3px solid black;
+    }
+</style>
+<%- include("partials/footer") %>  

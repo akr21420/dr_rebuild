@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
 router.post("/", upload.single("picture"), async (req, res) => {
   imgurl = req.file.path;
   //   renderAdd();
-  res.render("patient_add", { data: {} });
+  // res.render("patient_add", { data: {} });
+  res.redirect("/predict");
 });
 module.exports = router;
