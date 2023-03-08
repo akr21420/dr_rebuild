@@ -9,7 +9,7 @@ const sendData = async (req, res) => {
   let data = { url: imgurl };
   var options = {
     method: "POST",
-    uri: "http://13.127.205.10:8000/",
+    uri: "http://127.0.0.1:8000/",
     body: data,
     json: true,
   };
